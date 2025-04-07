@@ -96,6 +96,9 @@ export class ButtonComponent {
   /** Whether the button should take up the full width of its container */
   @Input() fullWidth = false;
 
+  /** Custom class for the button */
+  @Input() customClass: string = '';
+
   /** Emitted when the button is clicked */
   @Output() clicked = new EventEmitter<MouseEvent>();
 
@@ -115,7 +118,7 @@ export class ButtonComponent {
   get buttonClasses(): string {
     return [
       // Base styles
-      'inline-flex items-center justify-center font-medium transition-colors duration-200',
+      'inline-flex items-center justify-center font-medium transition-colors duration-200 cursor-pointer',
       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
       'disabled:pointer-events-none disabled:opacity-50',
       // Size variant
@@ -124,6 +127,8 @@ export class ButtonComponent {
       variantStyles[this.variant],
       // Full width
       this.fullWidth ? 'w-full' : '',
+      // Custom class
+      this.customClass,
     ]
       .filter(Boolean)
       .join(' ');

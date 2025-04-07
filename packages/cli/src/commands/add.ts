@@ -46,10 +46,6 @@ add
         // Copy component files
         await fs.copy(componentDir, targetDir);
 
-        // Create index.ts file
-        const indexContent = `export * from './${component}.component';\n`;
-        await fs.writeFile(path.join(targetDir, 'index.ts'), indexContent);
-
         console.log(`✅ Added ${component} component to ${componentPath}/${component}`);
       } finally {
         // Clean up temporary directory
