@@ -1,6 +1,6 @@
 {
   "name": "@ngshad/cli",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "CLI for installing ngshad components",
   "bin": {
     "ngshad": "./dist/index.js"
