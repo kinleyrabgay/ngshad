@@ -1,0 +1,33 @@
+{
+  "name": "@ngshad/components",
+  "version": "0.0.1",
+  "description": "Angular UI components built with Tailwind CSS",
+  "private": false,
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "peerDependencies": {
+    "@angular/common": "^17.2.0",
+    "@angular/core": "^17.2.0"
+  },
+  "devDependencies": {
+    "typescript": "~5.2.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/ngshad"
+  },
+  "keywords": [
+    "angular",
+    "components",
+    "ui",
+    "tailwindcss",
+    "design-system"
+  ],
+  "author": "",
+  "license": "MIT"
+}

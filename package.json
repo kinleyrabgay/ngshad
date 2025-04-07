@@ -1,21 +1,28 @@
 {
-  "name": "@nui/source",
-  "version": "0.0.0",
-  "license": "MIT",
-  "scripts": {},
+  "name": "ngshad",
+  "version": "0.0.1",
+  "description": "A collection of reusable Angular components built with Tailwind CSS",
   "private": true,
-  "dependencies": {},
-  "devDependencies": {
-    "@nx/js": "20.7.1",
-    "@swc-node/register": "~1.9.1",
-    "@swc/core": "~1.5.7",
-    "@swc/helpers": "~0.5.11",
-    "nx": "20.7.1",
-    "prettier": "^2.6.2",
-    "tslib": "^2.3.0",
-    "typescript": "~5.7.2"
+  "scripts": {
+    "build": "npm run build:components && npm run build:cli",
+    "build:components": "cd packages/components && npm run build",
+    "build:cli": "cd packages/cli && npm run build",
+    "test": "npm run test:components && npm run test:cli",
+    "test:components": "cd packages/components && npm test",
+    "test:cli": "cd packages/cli && npm test",
+    "lint": "npm run lint:components && npm run lint:cli",
+    "lint:components": "cd packages/components && npm run lint",
+    "lint:cli": "cd packages/cli && npm run lint"
   },
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "keywords": [
+    "angular",
+    "components",
+    "ui",
+    "tailwindcss"
+  ],
+  "author": "NgShad UI Team",
+  "license": "MIT"
 }

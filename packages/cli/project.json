@@ -1,0 +1,12 @@
+{
+  "name": "@ngshad/cli",
+  "version": "0.0.1",
+  "private": false,
+  "bin": {
+    "ngshad": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  }
+}
