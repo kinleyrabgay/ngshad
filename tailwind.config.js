@@ -4,10 +4,7 @@ const { join } = require('path');
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ['class'],
-  content: [
-    './components/**/*.{html,ts}',
-    './core/**/*.{html,ts}',
-  ],
+  content: ['./components/**/*.{html,ts}', './core/**/*.{html,ts}'],
   theme: {
     container: {
       center: true,
@@ -74,4 +71,4 @@ module.exports = {
     },
   },
   plugins: [require('tailwindcss-animate')],
-} 
+};

@@ -13,6 +13,7 @@ out/
 
 # Testing
 coverage/
+.nyc_output/
 
 # Environment
 .env

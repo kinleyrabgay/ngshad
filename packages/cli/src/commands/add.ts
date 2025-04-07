@@ -1,10 +1,13 @@
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
-import { join, resolve } from 'path';
-import { NgShadConfig } from './init';
+import { Command } from 'commander';
+import * as fs from 'fs-extra';
+import * as path from 'path';
+import { NgShadConfig } from '../types';
 
 const AVAILABLE_COMPONENTS = ['button', 'card', 'input', 'select'];
 
-export async function add(component: string) {
+const add = new Command('add');
+
+add.argument('<component>', 'Component to add').action(async (component: string): Promise<void> => {
   try {
     // Validate component
     if (!AVAILABLE_COMPONENTS.includes(component)) {
@@ -13,36 +16,24 @@ export async function add(component: string) {
       throw new Error(`Component '${component}' is not available.`);
     }
 
-    // Load config
-    const configPath = join(process.cwd(), 'ngshad.config.json');
-    if (!existsSync(configPath)) {
-      throw new Error('NgShad config not found. Run `ngshad init` first.');
-    }
+    // Read the configuration file
+    const config = (await fs.readJSON('ngshad.config.json')) as NgShadConfig;
+    const componentPath = config.componentsPath || 'src/components';
 
-    const config: NgShadConfig = JSON.parse(readFileSync(configPath, 'utf8'));
+    // Create the target directory if it doesn't exist
+    const targetDir = path.join(process.cwd(), componentPath, component);
+    await fs.ensureDir(targetDir);
 
-    // Find component file
-    const libraryRoot = resolve(__dirname, '../../../components/src');
-    const componentFile = join(libraryRoot, component, `${component}.component.ts`);
+    // Copy the component files
+    const sourceDir = path.join(__dirname, '../../components', component);
+    await fs.copy(sourceDir, targetDir);
 
-    if (!existsSync(componentFile)) {
-      throw new Error(`Component '${component}' not found.`);
-    }
+    // Create an index.ts file for easy importing
+    const indexContent = `export * from './${component}.component';\n`;
+    await fs.writeFile(path.join(targetDir, 'index.ts'), indexContent);
 
-    // Create target directory
-    const targetDir = join(process.cwd(), config.componentsPath, component);
-    if (!existsSync(targetDir)) {
-      mkdirSync(targetDir, { recursive: true });
-    }
-
-    // Copy component
-    let content = readFileSync(componentFile, 'utf8');
-    content = content.replace(/ngshad-/g, `${config.prefix}-`);
-    
-    writeFileSync(join(targetDir, `${component}.component.ts`), content);
-    console.log(`✓ Added ${component} component`);
-    
-  } catch (error) {
+    console.log(`✅ Added ${component} component to ${componentPath}/${component}`);
+  } catch (error: unknown) {
     if (error instanceof Error) {
       console.error('Error:', error.message);
     } else {
@@ -50,4 +41,6 @@ export async function add(component: string) {
     }
     process.exit(1);
   }
-} 
+});
+
+export default add;

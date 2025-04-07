@@ -5,14 +5,26 @@
   "private": false,
   "scripts": {
     "build": "tsc",
-    "dev": "tsc --watch"
+    "dev": "tsc --watch",
+    "lint": "eslint \"src/**/*.ts\"",
+    "lint:fix": "eslint --fix \"src/**/*.ts\"",
+    "format": "prettier --write \"src/**/*.{ts,html,json,md}\""
   },
   "peerDependencies": {
     "@angular/common": "^17.2.0",
     "@angular/core": "^17.2.0"
   },
   "devDependencies": {
-    "typescript": "~5.2.2"
+    "typescript": "~5.2.2",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "@angular-eslint/eslint-plugin": "^17.2.1",
+    "@angular-eslint/eslint-plugin-template": "^17.2.1",
+    "@angular-eslint/template-parser": "^17.2.1",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "prettier": "^3.5.3"
   },
   "publishConfig": {
     "access": "public"

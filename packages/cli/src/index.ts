@@ -6,15 +6,9 @@ import { version } from '../package.json';
 
 const program = new Command();
 
-program
-  .name('ngshad')
-  .description('CLI for managing NgShad UI components')
-  .version(version);
+program.name('ngshad').description('CLI for managing NgShad UI components').version(version);
 
-program
-  .command('init')
-  .description('Initialize NgShad in your project')
-  .action(init);
+program.command('init').description('Initialize NgShad in your project').action(init);
 
 program
   .command('add <component>')

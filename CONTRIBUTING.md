@@ -5,22 +5,26 @@ Thank you for your interest in contributing to NgShad UI! This document provides
 ## Development Setup
 
 1. Fork and clone the repository:
+
 ```bash
 git clone https://github.com/kinleyrabgay/ngshad.git
 cd ngshad
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Build the project:
+
 ```bash
 npm run build
 ```
 
 4. Link for local development:
+
 ```bash
 cd packages/cli && npm link
 ```
@@ -47,11 +51,13 @@ ngshad/
 ## Adding a New Component
 
 1. Create a new component directory:
+
 ```bash
 mkdir packages/components/src/your-component
 ```
 
 2. Create the component files:
+
 ```typescript
 // your-component.component.ts
 import { Component, Input } from '@angular/core';
@@ -61,9 +67,7 @@ import { CommonModule } from '@angular/common';
   selector: 'ngshad-your-component',
   standalone: true,
   imports: [CommonModule],
-  template: `
-    <!-- Your component template -->
-  `
+  template: ` <!-- Your component template --> `,
 })
 export class YourComponent {
   // Your component logic
@@ -71,6 +75,7 @@ export class YourComponent {
 ```
 
 3. Follow these guidelines:
+
 - Use Tailwind CSS for styling
 - Make components standalone
 - Add proper TypeScript types
@@ -90,6 +95,7 @@ We follow [Conventional Commits](https://www.conventionalcommits.org/):
 - `chore:` Maintenance tasks
 
 Example:
+
 ```bash
 git commit -m "feat: add new button variant"
 ```
@@ -97,6 +103,7 @@ git commit -m "feat: add new button variant"
 ## Pull Request Process
 
 1. Create a new branch:
+
 ```bash
 git checkout -b feat/your-feature
 ```
@@ -142,4 +149,4 @@ git checkout -b feat/your-feature
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under the MIT License. 
+By contributing, you agree that your contributions will be licensed under the MIT License.

@@ -52,6 +52,7 @@ import { ButtonComponent } from './components/button';
 ## Component Variants
 
 ### Button
+
 ```html
 <!-- Default -->
 <ngshad-button>Default</ngshad-button>
